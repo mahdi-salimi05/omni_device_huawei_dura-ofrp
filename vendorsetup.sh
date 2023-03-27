@@ -40,6 +40,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_RECOVERY_INSTALL_PARTITION=/dev/block/platform/bootdevice/by-name/recovery
 	export FOX_RECOVERY_SYSTEM_PARTITION=/dev/block/platform/bootdevice/by-name/system
 	export FOX_RECOVERY_VENDOR_PARTITION=/dev/block/platform/bootdevice/by-name/vendor
+	export FOX_RECOVERY_BOOT_PARTITION=/dev/block/platform/bootdevice/by-name/boot
         export OF_VANILLA_BUILD=1
         export ALLOW_MISSING_DEPENDENCIES=true
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
@@ -47,9 +48,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_VANILLA_BUILD=1
 	export OF_FORCE_PREBUILT_KERNEL=1
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-    	export OF_SKIP_ORANGEFOX_PROCESS=1
-    	export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
-    	export OF_DONT_PATCH_ON_FRESH_INSTALLATION=1
+    	export OF_SKIP_ORANGEFOX_PROCESS=0
+    	export OF_DISABLE_MIUI_SPECIFIC_FEATURES=0
+    	export OF_DONT_PATCH_ON_FRESH_INSTALLATION=0
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=0
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 	export OF_USE_MAGISKBOOT=1
@@ -59,20 +60,45 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_USE_GREEN_LED=1
 	export OF_DEVICE_WITHOUT_PERSIST=1
 	export OF_DISABLE_EXTRA_ABOUT_PAGE=0
+	export FOX_DELETE_AROMAFM=1
+	export OF_MAINTAINER=mahdi-salimi05
+	export OF_MAINTAINER_AVATAR="/home/mahdi/OrangeFox/8.1/device/huawei/dura/file/mahdi-salimi05.png"
+	export OF_ALLOW_DISABLE_NAVBAR=0
+	export TARGET_DEVICE_ALT="dra-lx5"
+	export OF_TARGET_DEVICES="dra,dura"
+	export OF_OTA_BACKUP_STOCK_BOOT_IMAGE=1
+	export OF_FORCE_DISABLE_DM_VERITY=1
+	export OF_FORCE_DISABLE_FORCED_ENCRYPTION=1
+	export OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION=1
+	export OF_DISABLE_DM_VERITY=1
+	export OF_DISABLE_FORCED_ENCRYPTION=1
+	export OF_DISABLE_DM_VERITY_FORCED_ENCRYPTION=1
+	export OF_CLASSIC_LEDS_FUNCTION=1
+	export OF_NO_SAMSUNG_SPECIAL=1
+	export FOX_DISABLE_APP_MANAGER=0
+	export FOX_USE_XZ_UTILS=1
+	export FOX_USE_SPECIFIC_MAGISK_ZIP="/home/mahdi/OrangeFox/8.1/device/huawei/dura/file/Magisk-v23.0.zip"
+	export FOX_VARIANT=EMUI
+	export FOX_USE_TAR_BINARY=1
+	export FOX_USE_SED_BINARY=1
+	
+	
 
-	#export FOX_REMOVE_AAPT=1
-	#export FOX_REMOVE_BASH=1
-	#export FOX_REMOVE_ZIP_BINARY=1
-	#export FOX_DRASTIC_SIZE_REDUCTION=1
+	# export FOX_REMOVE_AAPT=1
+	# export FOX_REMOVE_BASH=1
+	export FOX_REMOVE_ZIP_BINARY=0
+	# export FOX_DRASTIC_SIZE_REDUCTION=1
 	export FOX_USE_BASH_SHELL=1
-	export FOX_ASH_IS_BASH=1
+	export FOX_ASH_IS_BASH=0
 	export FOX_USE_NANO_EDITOR=1
 	unset FOX_REPLACE_BUSYBOX_PS
 
         # -- add settings for R11 --
         export FOX_ADVANCED_SECURITY=1
         export FOX_R11=1
-        export OF_QUICK_BACKUP_LIST="/boot;/data;/vendor_image;/system_image;"
+        export OF_QUICK_BACKUP_LIST="/boot;/data;/recovery;/erecovery;/vendor_image;/system_image;"
+        export OF_USE_LOCKSCREEN_BUTTON=1
+        export OF_DEVICE_WITHOUT_PERSIST=1
         # -- end R11 settings --
 
 	# let's see what are our build VARs
@@ -86,7 +112,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	add_lunch_combo omni_"$FDEVICE"-userdebug
 fi
 #
-
 
 
 
